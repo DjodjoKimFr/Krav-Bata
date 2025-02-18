@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='fr'>
+	<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap" rel="stylesheet">
+
+        <title>Taba'Krav</title>
+        <!-- Inclusion du fichier css pour le style du jeu -->
+        <link rel="stylesheet" href="style/style.css">
+    
+        <!-- Inclusion des scripts nécessaires pour faire fonctionner l'appli -->
+        <!-- Attention, l'ordre des fichiers js est important.  -->
+        <script src="scripts/config.js" defer></script>
+        <script src="scripts/script.js" defer></script>
+        <script src="scripts/main.js" defer></script>
+	</head>
+	<body id ="seance">
+        <header>
+            <h1>Krav'bata</h1>
+            <h2>L'appli pour les costauds qui ne lâchent rien</h2>
+        </header>
+        <main>
+            <button id="launch">Lancer le Krav'bata !</button>
+            <div class="zoneTimer">
+                <h3>Timer</h3>
+                <div class="timer">
+                    <p id="textTimer"></p>
+                    <time datetime="00:00">00:00</time>
+                </div>
+            </div>
+            <div class="zoneExerciceEnCours">
+                <h3>Exercice en cours</h3>
+                <div class="exerciceEnCours">
+                    <p id = "exerciceEnCours"></p>
+                </div>
+            </div>
+            <div class="zoneExerciceSuivant">
+                <h3>Exercice suivant</h3>
+                <div class="exerciceSuivant">
+                    <p id="exerciceSuivant"></p>
+                </div>
+            </div>
+            <a href="index.html"><button id="retour">retour</button></a>
+        </main>
+		<footer>
+            @Copyright : DjodjoKimFr.
+        </footer>
+
+	</body>
+</html>

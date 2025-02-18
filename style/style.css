@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 10px;
+  font-size: 60px;
+  font-weight: 900;
+  color: white;
+  font-family: "Trade Winds", serif;
+}
+
+h2 {
+  margin: 10px;
+  font-size: 40px;
+  font-weight: 600;
+  color: white;
+  font-family: "Trade Winds", serif;
+}
+
+h3 {
+  margin: 10px;
+  font-size: 35px;
+  font-weight: 500;
+  color: white;
+  font-family: "Trade Winds", serif;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(247,45,5);
+  background: linear-gradient(0deg, rgba(247,45,5,1) 0%, rgba(247,45,5,1) 13%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  min-width: 200px;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.zoneParametresTimer,
+.timer{
+  color : white;
+  margin: 10px;
+  font-family: "Trade Winds", serif;
+  font-size : 21px;
+}
+
+.exerciceEnCours,
+.exerciceSuivant {
+  padding: 20px;
+  color : white;
+  margin: 10px;
+  font-family: "Trade Winds", serif;
+  font-size : 21px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  background-color: #5c1102;
+  border-radius: 5px;
+}
+
+.tempsTotal{
+  color : white;
+  margin: 10px;
+  font-family: "Trade Winds", serif;
+}
+
+#zoneChoixExercices {
+    display: block; /* Assure que le conteneur est en bloc (le défaut) */
+    font-family: "Trade Winds", serif;
+  }
+  
+  #zoneChoixExercices select {
+    display: block;  /* Permet à chaque <select> de prendre une ligne entière */
+    margin-bottom: 10px; /* Espace entre les <select> */
+    border : 2px solid black;
+    background-color: #831803;
+    color : white;
+    font-family: "Trade Winds", serif;
+    font-size : 17px;
+    font-weight: 10;
+    font-style: normal;
+    padding : 5px;
+    text-align : center;
+    border-radius : 20px;
+    overflow : auto;
+
+  }
+
+select:focus {
+    outline: none; /* Retire le contour par défaut lors du focus */
+ }
+
+button {
+
+    background-color: #bd2204; /* Couleur de fond */
+    border-style: solid; 
+    border-color: black;
+    border-width: 2px;
+    border-radius: 12px; /* Coins arrondis */
+    color: white; /* Couleur du texte */
+    padding: 10px 22px; /* Espacement interne */
+    font-family: "Trade Winds", serif;
+    text-align: center; /* Alignement du texte */
+    text-decoration: none; /* Pas de décoration de texte */
+    display: inline-block; /* Affichage en ligne */
+    font-size: 16px; /* Taille de la police */
+    margin: 4px 2px; /* Espacement externe */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: background-color 0.3s ease; /* Transition douce pour la couleur de fond */
+}
+
+ 
+
+button:hover {
+
+    background-color: #b02307; /* Couleur de fond au survol */
+
+}
+
+footer {
+  position: bottom;
+  bottom: 0;
+  display: flex;
+  justify-content: right;
+  width: 100%;
+  padding: 30px;
+  font-family: "Trade Winds", serif;
+  font-weight: 600;
+  font-size: 17px;
+  background: rgb(247,45,5);
+  background: linear-gradient(180deg, rgba(247,45,5,1) 0%, rgba(0,0,0,1) 100%);
+  color : white;
+}
+
+/** 
+ * Responsive
+ */
+
+
+ /* En dessous de 1200 px */
+ @media screen and (max-width: 1200px) {
+  main {
+      width: 60%;
+      padding: 30px;
+  }
+}
+
+
+/* En dessous de 800 px */
+@media screen and (max-width: 800px) {
+  main {
+      width: 90%;
+      padding: 10px;
+  }
+}
