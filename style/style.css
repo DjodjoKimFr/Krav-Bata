@@ -139,6 +139,11 @@ button:hover {
 
 }
 
+button:disabled {
+    background-color: darkgray;
+    color : #b02307;
+}
+
 footer {
   position: bottom;
   bottom: 0;

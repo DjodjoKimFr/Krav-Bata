@@ -1,13 +1,27 @@
+function randomise(niveauDifficulte) {
+  // Filtrer les exercices par difficulté
+  const exercicesFiltres = exercices.filter(exercice => exercice.difficulty === niveauDifficulte);
+  // Tirer un index aléatoire parmi les exercices filtrés
+  const indexAleatoire = Math.floor(Math.random() * exercicesFiltres.length);
+  // Accéder à l'exercice au hasard
+  const exerciceAleatoire = exercicesFiltres[indexAleatoire];
+  return exerciceAleatoire;
+}
+
+
+
 //function made for make the same number of options as the number of repetitions in the HTML page.
 //It takes the object "exercices" in the config.js for better addition of exercices
 function setExercices(reps) {
   const zoneChoixExercices = document.getElementById("zoneChoixExercices");
+  let btnSeance = document.getElementById("depart");
+  btnSeance.disabled = true;
   
   const existingSelects = zoneChoixExercices.querySelectorAll('select');
   existingSelects.forEach(select => select.remove());//Initialize the number of select
 
   let selectedOptionsList = [];
-  let restTime = sessionStorage.getItem('restTime')
+  //let restTime = sessionStorage.getItem('restTime')
 
   // sort the exercices by difficukty (1 = easy, 4 = hard)
   // exercices object in config.js
@@ -35,11 +49,35 @@ function setExercices(reps) {
 
       select.appendChild(option);
     });
+
+    // Créer l'option "Exercice au hasard"
+    const randomOption = document.createElement("option");
+    randomOption.value = "random1";  // Valeur spéciale pour l'option au hasard
+    randomOption.textContent = "Exercice niveau 1 au hasard";
+    select.appendChild(randomOption);
+
+
     select.addEventListener('change', function() {
       const selectedOption = select.value;  // Récupérer la valeur de l'option sélectionnée
-      console.log(`Exercice sélectionné pour Exercice N°${i}: ${selectedOption}`);
 
-      selectedOptionsList[i-1] = selectedOption;
+      // Si l'option "Exercice au hasard" est sélectionnée
+  if (selectedOption === "random1") {
+    const niveauDifficulte = 1; // Par exemple, on prend la difficulté du premier exercice, mais tu peux ajuster en fonction de l'option choisie
+    const exerciceAleatoire = randomise(niveauDifficulte);
+    
+    // Mettre l'exercice aléatoire dans le select
+    select.value = exerciceAleatoire.name;
+
+    // Ajouter l'exercice sélectionné à la liste
+    selectedOptionsList[i - 1] = exerciceAleatoire.name;
+  } else {
+    selectedOptionsList[i - 1] = selectedOption;  // Ajouter l'exercice sélectionné manuellement
+  }
+
+      // Vérifier si toutes les options ont été sélectionnées
+      const allSelected = [...zoneChoixExercices.querySelectorAll('select')].every(select => select.value !== "");
+      btnSeance.disabled = !allSelected;
+
       // Convertir le tableau en chaîne JSON et le stocker dans sessionStorage
       sessionStorage.setItem('storageSelectedOptionList', JSON.stringify(selectedOptionsList));
 
@@ -293,6 +331,11 @@ function workTimer() {
         }
         timerZone.innerText = currentWorkTime;
 
+        if (currentWorkTime === 5){
+          playSound('sounds/stop.mp3');
+          console.log('Musique du timer StarTimer');
+        }
+
         if (currentWorkTime <= 0) {
           clearInterval(timer);
           console.log("Fin de l'effort !");
@@ -305,7 +348,7 @@ function workTimer() {
   function runRestTimer() {
     return new Promise(resolve => {
 
-      playSound('sounds/stop.mp3');
+      //playSound('sounds/stop.mp3');
 
       let currentRestTime = Number(restTime) + 1;
       let timer = setInterval(() => {
@@ -317,7 +360,9 @@ function workTimer() {
         textWork.innerText = "Repos en cours...";
         timerZone.innerText = currentRestTime;
 
-        if (currentRestTime === 5) {
+
+
+        if (currentRestTime === 9) {
           //playSound('sounds/timer.mp3');
           if (exercice && exercice.sound) {
             // If there's a sound for the exercice, play it
@@ -328,6 +373,11 @@ function workTimer() {
             console.log("exercice de runRestTimer: " + selectedExerciceName);
           }
       }
+
+        if (currentRestTime === 5  && exercieIndex!=reps){
+          playSound('sounds/timer.mp3');
+          console.log('Musique du timer StarTimer');
+        }
 
         if (currentRestTime <= 0) {
           clearInterval(timer);
