@@ -9,5 +9,6 @@ const exercices = [
     { name: "Squats frappés", difficulty: 3, sound: "sounds/squats_frappes.mp3" },
     { name: "Planche", difficulty: 1, sound: "sounds/planche.mp3" },
     { name: "Planche dynamique", difficulty: 2, sound: "sounds/planche_dynamique.mp3" },
-    { name: "Burpees", difficulty: 3, sound: "sounds/burpees.mp3" }
+    { name: "Burpees", difficulty: 3, sound: "sounds/burpees.mp3" },
+    { name: "Corde à sauter", difficulty: 1, sound:"sounds/corde_a_sauter.mp3"}
   ];
