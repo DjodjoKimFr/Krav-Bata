@@ -436,6 +436,8 @@ function endTimer() {
 
 
 function setSeance () {
+  let btnSeance = document.getElementById("depart");
+  btnSeance.disabled = true;
       setReps();
       setRestTime();
       setWorkTime();
